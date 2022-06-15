@@ -35,8 +35,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // routing setup
 app.use("/", loginRouter);
-// app.use("/users", usersRouter);
-// app.use("/inbox", inboxRouter);
+app.use("/users", usersRouter);
+app.use("/inbox", inboxRouter);
 
 // 404 Not Found error handler
 app.use(notFoundHandler);
