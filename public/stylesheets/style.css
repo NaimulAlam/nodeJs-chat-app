@@ -7,13 +7,13 @@
 
 /* css custom properties */
 :root {
-  --primary: #066d90;
-  --secondary: #24484f;
-  --tertiary: #303f4b;
-  --dark: #2e2e37;
-  --yellow: #d7d410;
-  --blue: #2e91c7;
-  --light: #fff;
+  --primary: #e1ebee;
+  --secondary: #5d76a9;
+  --tertiary: #06366c;
+  --dark: #35353f;
+  --yellow: #013a8f;
+  --blue: #0070bb;
+  --light: #98a5b8;
   --red: rgb(206, 50, 50);
 }
 
