@@ -1,4 +1,6 @@
 // extarnal imports
+const multer = require("multer");
+const path = require("path");
 const createError = require("http-errors");
 
 // common function for single file upload that can be used in the middleware or the controller.
@@ -22,13 +24,7 @@ function uploader(
     filename: function (req, file, cb) {
       const fileExt = path.extname(file.originalname);
       const fileName =
-        path.basename(
-          file.originalname
-            .replace(fileExt, "")
-            .tolowercase()
-            .split(" ")
-            .join("-")
-        ) +
+        file.originalname.replace(fileExt, "").split(" ").join("-") +
         "-" +
         Date.now();
 

@@ -12,7 +12,7 @@
         id="add-user-form"
       >
         <input type="text" placeholder="enter name" name="name" />
-        <p class="error show">Error</p>
+        <p class="error name-error">Error</p>
 
         <input type="text" placeholder="enter email" name="email" />
         <p class="error email-error"></p>
@@ -34,6 +34,7 @@
     </div>
   </div>
 </div>
+
 <script>
   const modal = document.querySelector("#add-user-modal");
   const form = document.querySelector("#add-user-form");
@@ -71,7 +72,8 @@
 
     // get form data
     const formData = new FormData(form);
-
+    console.log(form, formData);
+    console.log(formData);
     // send request to the server
     let response = await fetch("/users", {
       method: "POST",
@@ -80,7 +82,7 @@
 
     // get response from the server
     let result = await response.json();
-
+    console.log("result", result);
     // handle response and error
     if (result.errors) {
       // errors

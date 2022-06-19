@@ -12,8 +12,8 @@ const addUserValidators = [
   check("name")
     .isLength({ min: 1 })
     .withMessage("Name is required")
-    .isAlpha("en-US", { ignore: "-" })
-    .withMessage("Name must be alphabetic")
+    .isAlpha("en-US", { ignore: " " })
+    .withMessage("Name must be alphabetical")
     .trim(),
   check("email")
     .isEmail()
@@ -71,7 +71,7 @@ const addUserValidationHandler = function (req, res, next) {
     if (req.files.length > 0) {
       const { filename } = req.files[0];
       unlink(
-        path.join(__dirname, `../public/uploads/avatars/${filename}`),
+        path.join(__dirname, `../../public/uploads/avatars/${filename}`),
         (err) => {
           if (err) {
             console.log(err);
