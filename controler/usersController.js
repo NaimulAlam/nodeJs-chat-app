@@ -1,6 +1,9 @@
 // extarnal imports
 const bcrypt = require("bcrypt");
 
+// internal imports
+const User = require("../models/People");
+
 // get users page
 function getUsers(req, res, next) {
   res.render("users");
@@ -27,7 +30,7 @@ async function addUser(req, res, next) {
   // save the new user to the database or throw an error if there is a problem
   try {
     const result = await newUser.save();
-    res.status(2000).json({
+    res.status(200).json({
       message: "User added successfully",
     });
   } catch (err) {

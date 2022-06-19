@@ -10,9 +10,9 @@ function avatarUpload(req, res, next) {
     // file types that are allowed to be uploaded
     ["image/png", "image/jpeg", "image/jpg"],
     // max file size in bytes 1mb
-    100000,
+    1000000,
     // error message for the file type
-    "only .jpg, .jpeg or .png format is allowed"
+    "Only .jpg, .jpeg or .png format is allowed"
   );
 
   // call the middleware function to catch the error before file upload and avoid to send the error to the default error handler

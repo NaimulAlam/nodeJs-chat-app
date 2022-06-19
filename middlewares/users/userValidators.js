@@ -10,12 +10,11 @@ const User = require("../../models/People");
 //  add user form validation middleware
 const addUserValidators = [
   check("name")
-    .isLength({ min: 3 })
+    .isLength({ min: 1 })
     .withMessage("Name is required")
     .isAlpha("en-US", { ignore: "-" })
     .withMessage("Name must be alphabetic")
     .trim(),
-
   check("email")
     .isEmail()
     .withMessage("Invalid email address")
@@ -23,7 +22,6 @@ const addUserValidators = [
     .custom(async (value) => {
       try {
         const user = await User.findOne({ email: value });
-
         if (user) {
           throw createError("Email already exists");
         }
@@ -31,7 +29,6 @@ const addUserValidators = [
         throw createError(err.message);
       }
     }),
-
   check("mobile")
     .isMobilePhone("pl-PL", {
       strictMode: true,
@@ -40,7 +37,6 @@ const addUserValidators = [
     .custom(async (value) => {
       try {
         const user = await User.findOne({ mobile: value });
-
         if (user) {
           throw createError("Phone number already exists");
         }
@@ -48,7 +44,6 @@ const addUserValidators = [
         throw createError(err.message);
       }
     }),
-
   check("password")
     .isStrongPassword()
     .withMessage(
@@ -56,7 +51,7 @@ const addUserValidators = [
     ),
 ];
 
-const addUserValidationHandler = async (req, res, next) => {
+const addUserValidationHandler = function (req, res, next) {
   const errors = validationResult(req);
   const mappedErrors = errors.mapped();
   /** example of mappedErrors:

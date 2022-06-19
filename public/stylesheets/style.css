@@ -11,7 +11,7 @@
   --secondary: #5d76a9;
   --tertiary: #06366c;
   --dark: #35353f;
-  --yellow: #013a8f;
+  --green: #018f7e;
   --blue: #0070bb;
   --light: #98a5b8;
   --red: rgb(206, 50, 50);
@@ -32,7 +32,7 @@ body {
 
 html {
   font-family: Arial, Helvetica, sans-serif;
-  background: linear-gradient(to right, var(--yellow) 0%, var(--blue) 100%);
+  background: linear-gradient(to right, var(--green) 0%, var(--blue) 100%);
   font-size: 10px;
 }
 
@@ -77,7 +77,7 @@ input.error {
 input[type="submit"] {
   margin: 2rem auto;
   width: 200px;
-  background: linear-gradient(to right, var(--yellow), var(--blue));
+  background: linear-gradient(to right, var(--green), var(--blue));
   cursor: pointer;
   font-weight: 600;
   transition: transform 0.1s ease-in-out;
@@ -112,7 +112,7 @@ input[type="submit"]:active {
   border: 3px solid;
   border-image-slice: 1;
   border-width: 3px;
-  border-image-source: linear-gradient(to left, var(--yellow), var(--blue));
+  border-image-source: linear-gradient(to left, var(--green), var(--blue));
 }
 
 .modal .modal-title {
@@ -404,7 +404,7 @@ input[type="submit"]:active {
 }
 
 .you-message .message-text {
-  background: var(--yellow);
+  background: var(--green);
   color: var(--dark);
   border: 2px solid var(--dark);
   border-radius: 14px 14px 0 14px;
@@ -601,7 +601,7 @@ input[type="submit"]:active {
 }
 
 #users-table thead tr {
-  background-color: var(--yellow);
+  background-color: var(--green);
   color: var(--primary);
   text-align: left;
 }
@@ -644,7 +644,7 @@ input[type="submit"]:active {
 }
 
 #users-table tbody tr:last-of-type {
-  border-bottom: 2px solid var(--yellow);
+  border-bottom: 2px solid var(--green);
 }
 
 #users-table .manage img {
@@ -687,12 +687,12 @@ input[type="submit"]:active {
 
 /* styles related to toastify */
 .toastify {
-  color: var(--secondary);
+  color: var(--primary);
   font-size: 14px !important;
   background: -webkit-linear-gradient(
     to right,
-    var(--yellow) 0%,
+    var(--green) 0%,
     var(--blue) 100%
   );
-  background: linear-gradient(to right, var(--yellow) 0%, var(--blue) 100%);
+  background: linear-gradient(to right, var(--green) 0%, var(--blue) 100%);
 }
