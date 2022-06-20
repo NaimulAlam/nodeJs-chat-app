@@ -2,12 +2,32 @@
 const express = require("express");
 
 // internal imports
-const { getLogin } = require("../controler/loginController");
+const { getLogin, login, logout } = require("../controler/loginController");
 const decorateHtmlResponse = require("../middlewares/common/decorateHTMLresponse");
+const {
+  loginValidators,
+  loginValidationHandler,
+} = require("../middlewares/login/loginValidators");
 
 const router = express.Router();
 
+// set page title
+const page_title = "Login";
+
 // login page
-router.get("/", decorateHtmlResponse("Login"), getLogin);
+// decorateHtmlResponse is used to decorate the response with the html file.
+router.get("/", decorateHtmlResponse(page_title), getLogin);
+
+// process login request
+router.post(
+  "/",
+  decorateHtmlResponse(page_title),
+  loginValidators,
+  loginValidationHandler,
+  login
+);
+
+// logout request
+router.delete("/", logout);
 
 module.exports = router;
