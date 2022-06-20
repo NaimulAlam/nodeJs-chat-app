@@ -51,19 +51,19 @@ const addUserValidators = [
     ),
 ];
 
+/** example of mappedErrors:
+  mappedErrors = {
+    name: {
+      msg: "Name is required",
+    },
+    email: {  
+      msg: "Invalid email address",
+    },
+  };
+*/
 const addUserValidationHandler = function (req, res, next) {
   const errors = validationResult(req);
   const mappedErrors = errors.mapped();
-  /** example of mappedErrors:
-    mappedErrors = {
-      name: {
-        msg: "Name is required",
-      },
-      email: {  
-        msg: "Invalid email address",
-      },
-    };
-  */
   if (Object.keys(mappedErrors).length === 0) {
     next();
   } else {
