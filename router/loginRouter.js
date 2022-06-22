@@ -9,6 +9,8 @@ const {
   loginValidationHandler,
 } = require("../middlewares/login/loginValidators");
 
+const { redirectLoggedIn } = require("../middlewares/common/checkLogin");
+
 const router = express.Router();
 
 // set page title
@@ -16,7 +18,7 @@ const page_title = "Login";
 
 // login page
 // decorateHtmlResponse is used to decorate the response with the html file.
-router.get("/", decorateHtmlResponse(page_title), getLogin);
+router.get("/", decorateHtmlResponse(page_title), redirectLoggedIn, getLogin);
 
 // process login request
 router.post(
