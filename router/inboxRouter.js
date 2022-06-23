@@ -6,6 +6,8 @@ const { getInbox } = require("../controller/inboxController");
 const decorateHtmlResponse = require("../middlewares/common/decorateHtmlResponse");
 const { checkLogin } = require("../middlewares/common/checkLogin");
 
+const { checkLogin } = require("../middlewares/common/checkLogin");
+
 const router = express.Router();
 
 // inbox page

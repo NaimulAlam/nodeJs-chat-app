@@ -19,13 +19,13 @@ const { checkLogin } = require("../middlewares/common/checkLogin");
 
 const router = express.Router();
 
-// users page
+// Users page
 router.get("/", decorateHtmlResponse("Users"), checkLogin, getUsers);
 
 // add user
 router.post(
   "/",
-  checkLogin,
+  checkLogin, // check if user is logged in so that user can add user
   avatarUpload,
   addUserValidators,
   addUserValidationHandler,

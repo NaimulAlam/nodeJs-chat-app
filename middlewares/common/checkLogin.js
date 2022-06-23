@@ -22,7 +22,7 @@ const checkLogin = (req, res, next) => {
         res.status(500).json({
           errors: {
             common: {
-              msg: "Authentication failure!",
+              msg: "Authentication failure",
             },
           },
         });
@@ -33,20 +33,48 @@ const checkLogin = (req, res, next) => {
       res.redirect("/");
     } else {
       res.status(401).json({
-        error: "Authetication failure!",
+        error: "Authentication failure",
       });
     }
   }
 };
 
-const redirectLoggedIn = function (req, res, next) {
+const redirectLoggedIn = (req, res, next) => {
   let cookies =
     Object.keys(req.signedCookies).length > 0 ? req.signedCookies : null;
 
   if (!cookies) {
-    next();
+    try {
+      token = cookies[process.env.COOKIE_NAME];
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      req.user = decoded;
+
+      // pass user info to response locals
+      if (res.locals.html) {
+        res.locals.loggedInUser = decoded;
+      }
+      next();
+    } catch (err) {
+      if (res.locals.html) {
+        res.redirect("/");
+      } else {
+        res.status(500).json({
+          errors: {
+            common: {
+              msg: "Authentication failure",
+            },
+          },
+        });
+      }
+    }
   } else {
-    res.redirect("/inbox");
+    if (res.locals.html) {
+      res.redirect("/inbox");
+    } else {
+      res.status(401).json({
+        error: "Authentication failure",
+      });
+    }
   }
 };
 
